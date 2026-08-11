@@ -62,14 +62,14 @@ jobs:
               echo "Cannot resolve '$MANUAL_INPUT' to a commit."
               exit 1
             fi
-            echo "mode=manual" >> $GITHUB_OUTPUT
+            echo "mode=auto" >> $GITHUB_OUTPUT
             echo "target_sha=$TARGET_SHA" >> $GITHUB_OUTPUT
             echo "Manual mode — target: $MANUAL_INPUT ($TARGET_SHA)"
 
           else
             # Manual mode, blank input: use latest commit on upstream/main
             TARGET_SHA=$(git rev-parse upstream/main)
-            echo "mode=manual" >> $GITHUB_OUTPUT
+            echo "mode=auto" >> $GITHUB_OUTPUT
             echo "target_sha=$TARGET_SHA" >> $GITHUB_OUTPUT
             echo "Manual mode — latest commit: $TARGET_SHA"
           fi
